@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation - {{ page }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h1 class="text-center">Vous êtes sur la page {{ page }}</h1>
+    <div class="text-center mt-4">
+        {% for p in pages %}
+            <a href="{{ url_for('navigate', page=p) }}" class="btn btn-primary m-2">{{ p }}</a>
+        {% endfor %}
+        <a href="{{ url_for('stats') }}" class="btn btn-warning m-2">Voir les stats</a>
+    </div>
+</body>
+</html>
