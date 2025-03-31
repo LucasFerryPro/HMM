@@ -9,7 +9,7 @@
 <body class="container mt-5">
     <h1 class="text-center">Statistiques de Navigation</h1>
     
-    <h2 class="mt-4">Matrice des Transitions</h2>
+    <h2 class="mt-4">Tableau des Transitions et Probabilités</h2>
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -20,33 +20,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for src, row in transitions.items() %}
+            {% for src in pages %}
             <tr>
                 <td><strong>{{ src }}</strong></td>
                 {% for dst in pages %}
-                    <td>{{ row[dst] }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <h2 class="mt-4">Matrice des Probabilités</h2>
-    <table class="table table-bordered text-center">
-        <thead>
-            <tr>
-                <th>From \ To</th>
-                {% for p in pages %}
-                    <th>{{ p }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for src, row in probabilities.items() %}
-            <tr>
-                <td><strong>{{ src }}</strong></td>
-                {% for dst in pages %}
-                    <td>{{ row[dst] * 100 }}%</td>
+                    <td>{{ transitions[src][dst] }}<br><small>({{ probabilities[src][dst] * 100 }}%)</small></td>
                 {% endfor %}
             </tr>
             {% endfor %}
